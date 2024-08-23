@@ -1,0 +1,161 @@
+#Define and print variable
+Clg_name="Gvp"
+print(Clg_name)
+
+#Program to concat two string
+user_str1=str(input("Enter a string :"))
+user_str2=str(input("Enter a string to concate:")) 
+print("First String is "+user_str1)
+print("Second String is "+user_str2)
+con_str=user_str1+user_str2
+print("Concatenated String is "+con_str)
+
+#str formatting
+a=10
+b=23.4
+print("{} and {}".format(a,b))
+i,j=12,10.5
+print("{1} and {0}".format(i,j))
+#Program to add Padding
+print("{:5}{}".format("9ab",2))
+print("{:>5}{}".format("9ab",2))
+txt = f"We have {49:<8} chocolates."
+print(txt)
+
+#str slicing
+un='Gujrat Vidyapith'
+un[0]
+un[0:3]
+un[3:]
+un[-1]
+un[-1:]
+un[-14:]
+un[12:-2]
+un[2:-12]
+un[2:5]
+un[1:5]
+un[0::2]
+un[::2]
+un[::-1]
+s="stay home stay safe -"
+s[2:-12]
+a="0123456789x"
+a[-7:-1]
+
+#Program to find length of string
+user_str=str(input("Enter string to find length:"))
+str_len=len(user_str)
+print(str_len)
+
+#Program of String replace() function
+txt="Hello, World!"
+txt_replace=txt.replace("World","Python")
+print(txt_replace)
+
+#Addition of two numbers
+n1=float(input("Enter number 1:"))
+n2=float(input("Enter number 2:"))
+sum=n1+n2
+print("Addition of",n1,"+",n2,"is",sum)
+
+#Taking input from user
+Clg_name=str(input("Enter College name:"))
+print(Clg_name)
+
+#Convert the tuple into a list to be able to change it:
+x = (1,2,3)
+y = list(x)
+y[1] = "-"
+x = tuple(y)
+print(x)
+print(type(x))
+print(type(y))
+
+#Convert the tuple into a list, add "orange", and convert it back into a tuple:
+thistuple = (1,2,3,4)
+y = list(thistuple)
+y.append("a")
+thistuple = tuple(y)
+
+n=int(input('enter the number:'))
+print('number entered by user:',n)
+print(type(n))
+f=float(input('enter the float number:'))
+print(' float number entered by user:',f)
+print(type(f))
+b=bool(input('enter the boolean value:'))
+print('boolean number entered by user:',b)
+print(type(b))
+s=(input('enter the name:'))
+print('name entered by user:',s)
+print(type(s))
+
+#Access tuple elements
+t1=(1,'a',2,['a','b'],1.2)
+print(t1[3])
+
+#How to create tuple
+t=(1,2,3)
+print(t)
+print(type(t))
+#create tuple using constructor
+t1=tuple()
+type(t1)
+#find tuple length
+print(len(t))
+#Check the element exists in tuple or not
+thistuple = ("apple", "banana", "cherry")
+if "apple" in thistuple:
+  print("Yes, 'apple' is in the fruits tuple")
+
+#Program to create List
+l1=[1,1.4,"Riya"]
+print(l1)
+#Program to create list using list() function
+l2=list()
+print(type(l1))
+l2=[10,20,30]
+print(l2)
+
+#print the list element in sequence.
+n=[25,-25,5,-4,55,8,-8]
+n.sort()
+print(n)
+
+
+n=[25,-25,5,-4,55,8,-8]
+for i in range(0,len(n)):
+    for j in range(i+1,len(n)):
+        if n[i]>n[j]:
+            temp=n[i]
+            n[i]=n[j]
+            n[j]=temp
+print(n)
+
+print("" or 'false')
+print('a' or 'b')
+print('b' or 'a')
+print('k' or 1)
+print(1 or 'k')
+print('guj' or 'true')
+print('true' or 'guj')
+print('false' or 1.23)
+
+
+#Find maximum of two numbers
+num1=float(input("Enter number 1:"))
+num2=float(input("Enter number 2:"))
+if(num1>num2):
+    print(num1,"is Greater")
+else:
+    print(num2,"is Greater")
+
+a=5
+b=10
+print(a+b)
+a="riya"
+b="patel"
+print(a+b)
+
+4*a
+3*4
