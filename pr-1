@@ -1,0 +1,142 @@
+#Program to find Probability of neither a king nor a spadesfrom deck of well-shuffled cards
+tcards=int(52)
+tking=int(4)
+tspades=int(13)
+tspadeking=int(1)
+prob=tcards-(tking+tspades-tspadeking)
+probability=prob/tcards
+print("Probability of neither a king nor a spades is {}".format(probability))
+
+
+#sum of first n natural numbers
+n=int(input("Enter natural number:"))#Taking integer number from user
+sum_n=n*(n+1)/2
+print(int(sum_n))
+
+
+#Program to extract roll number using string indexing and slicing
+rollnum=input("Enter Roll Number:(DepYearRollno:CS2342)")
+dep=rollnum[0:2]
+year=rollnum[2:4]
+rollno=rollnum[4:]
+print("Department: {}   Year :20{}      Roll No:{} ".format(dep,year,rollno))
+
+
+#Word suffle using string manipulation
+str=input("Enter String:")
+mid=len(str)//2
+firsthalf=str[:mid]
+secondhalf=str[mid:]
+suffle_str=secondhalf+firsthalf
+print("Original String: ",str)
+print("Suffled String: ",suffle_str)
+
+
+#Program to check two blood group matches or not.
+compatible_group={
+    'A+':['A+','AB+'],
+    'A-':['A+','A-','AB+','AB-'],
+    'B+':['B+','AB+'],
+    'B-':['B+','B-','AB+','AB-'],
+    'AB+':['AB+'],
+    'AB-':['AB+','AB-'],
+    'O+':['A+','B+','AB+','O+'],
+    'O-':['A+','A-','B+','B-','AB+','AB-','O+','O-']}
+donor_bg=input("Enter the Donor's Blood group: ").strip().upper()
+recipient_bg=input("Enter the Recipient's Blood group: ").strip().upper()
+if recipient_bg in compatible_group.get(donor_bg,[]):
+    result="Both Blood Group matches."
+else:
+    result="Blood Group not matches."
+print(result)
+
+
+#Program to check student is from CS department
+stu_rollnum=input("Enter student Roll number: ")
+if(stu_rollnum[0]=="C" or stu_rollnum[0]=="c") and (stu_rollnum[1]=="S" or stu_rollnum[1]=="s"):
+    rno="Student is from CS department"
+else:
+    rno="Student is not from CS department"
+print(rno)
+
+
+#Program to check card is lucky card or not
+card,of,suit=input("Enter your card:").split()
+if(suit=="spade" and card=="ace")or(suit=="heart")or(suit=="dimond" and card=="queen")or(suit=="dimond" and card=="king")or (card=="7"):
+    ans="Card is lucky card."
+else:
+    ans="Card is not lucky card."
+print(ans)
+
+
+#Find out the percentage of student passed.
+n=int(input("Enter Number of student: "))
+i=0
+pass_stu=0
+while i<n:
+    marks=int(input("Enter the marks of student: "))
+    if marks>=40:
+        pass_stu=pass_stu+1
+    i=i+1
+pass_per=pass_stu*100/n
+print("{}".format(pass_per),"% is Passed.")
+
+
+#Program to print Fibonacii series
+n1=0
+n2=1
+num=int(input("Enter the number of elements:"))
+print(n1)
+print(n2)
+for i in range(2,num):
+    n3=n1+n2
+    print(n3)
+    n1=n2
+    n2=n3
+
+n=int(input())
+while n!=1:
+    if n%2==1:
+        n=3*n+1
+    else:
+        n=n//2
+    print(n,end=' ')
+
+
+#Program to check number is prime or not
+num=int(input("Enter a number:"))
+temp=0
+for i in range(2,(num//2)+1):
+    if(num%i==0):
+        temp=1
+        break
+if(temp==0):
+    print(num,"is a prime number")
+else:
+    print(num,"is not a prime number")
+
+
+#Find birthays in a month using dictionary
+birthday={
+    'Riya':'22/08/2004',
+    'Stuti':'15/03/2002',
+    'Sneha':'16/04/2003',
+    'Meera':'04/06/2006',
+    'Prachi':'06/09/2001'
+}
+month=input("Enter Birthday month(MM): ")
+for name,bday in birthday.items():
+    bday_month=bday[3:5]
+    if bday_month==month:
+        print(name)
+
+
+bills = [500, 200, 100, 50, 20, 10, 5, 2, 1]
+amount = float(input("Enter your amount in INR: "))
+bill_count = [0] * len(bills)
+for i in range(len(bills)):
+    bill_count[i] = amount // bills[i]
+    amount = amount % bills[i]
+for i in range(len(bills)):
+    if bill_count[i] > 0:
+        print(f"₹{bills[i]}: {bill_count[i]}")
