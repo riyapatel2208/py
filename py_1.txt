@@ -11,7 +11,7 @@ probability = num_neither / total_cards
 print("Probability of neither a king nor a spades is {}".format(probability))
 
 
-#Program to xsum of first n natural numbers
+#Program to sum of first n natural numbers
 # Taking integer input from the user
 n = int(input("Enter a natural number: "))  
 # condition to check n is positive integer or not
@@ -36,6 +36,16 @@ if len(rollnum) >= 6 and rollnum[:2].isalpha() and rollnum[2:4].isdigit() and ro
     print(f"Roll Number   : {rollno}")
 else:
     print("Invalid Roll Number format.")
+
+
+
+# Get the input string from the user
+input_string = input("Enter a string: ")
+# Using string indexing and slicing to manually jumble the string
+jumbled_string = input_string[1::2] + input_string[::2]
+# Print the original and jumbled strings
+print("Original String:", input_string)
+print("Jumbled String:", jumbled_string)
 
 
 
@@ -169,3 +179,20 @@ for name,bday in birthday.items():
     if bday_month==month:
         print(name)
 
+
+
+# Get the amount of money from the user
+amount = int(input("Enter the amount in rupees: "))
+# List of available note denominations in descending order
+denominations = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1]
+# Dictionary to store the count of each denomination
+note_count = {}
+# Calculate the number of notes for each denomination
+for note in denominations:
+    if amount >= note:
+        note_count[note] = amount // note  # Get the number of notes
+        amount %= note  # Reduce the amount by the value of those notes
+# Print the result
+print("You will need the following notes:")
+for note, count in note_count.items():
+    print(f"₹{note}: {count} notes")
