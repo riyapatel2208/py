@@ -1,0 +1,171 @@
+#Program to find Probability of neither a king nor a spadesfrom deck of well-shuffled cards
+total_cards = 52
+num_kings = 4
+num_spades = 13
+num_spade_kings = 1
+# that are either Kings or Spades
+num_kings_or_spades = num_kings + num_spades - num_spade_kings
+# cards that are neither Kings nor Spades
+num_neither = total_cards - num_kings_or_spades
+probability = num_neither / total_cards
+print("Probability of neither a king nor a spades is {}".format(probability))
+
+
+#Program to xsum of first n natural numbers
+# Taking integer input from the user
+n = int(input("Enter a natural number: "))  
+# condition to check n is positive integer or not
+if n > 0:
+    sum_n = n * (n + 1) / 2
+    print(f"The sum of the first {n} natural numbers is: {int(sum_n)}.")
+else:
+    print("Please enter a positive integer.")
+
+
+
+#Program to extract roll number using string indexing and slicing
+rollnum = input("Enter Roll Number (Format: DepYearRollno, e.g., CS2342): ").strip()
+# Condition for input
+if len(rollnum) >= 6 and rollnum[:2].isalpha() and rollnum[2:4].isdigit() and rollnum[4:].isdigit():
+    dep = rollnum[0:2].upper()
+    year = rollnum[2:4]
+    rollno = rollnum[4:]
+    print(f"\nStudent Details:")
+    print(f"Department    : {dep}")
+    print(f"Year          : 20{year}")
+    print(f"Roll Number   : {rollno}")
+else:
+    print("Invalid Roll Number format.")
+
+
+
+
+#Program to check two blood group matches or not.
+compatible_group = {
+    'A+': ['A+', 'AB+'],
+    'A-': ['A+', 'A-', 'AB+', 'AB-'],
+    'B+': ['B+', 'AB+'],
+    'B-': ['B+', 'B-', 'AB+', 'AB-'],
+    'AB+': ['AB+'],
+    'AB-': ['AB+', 'AB-'],
+    'O+': ['A+', 'B+', 'AB+', 'O+'],
+    'O-': ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+}
+donor_bg = input("Enter the Donor's Blood group: ").strip().upper()
+recipient_bg = input("Enter the Recipient's Blood group: ").strip().upper()
+# Check for compatibility
+if donor_bg in compatible_group and recipient_bg in compatible_group[donor_bg]:
+    print("Both Blood Groups match.")
+else:
+    print("Blood Groups do not match.")
+
+
+
+#Program to check student is from CS department
+stu_rollnum=input("Enter student Roll number: ")
+if(stu_rollnum[0]=="C" or stu_rollnum[0]=="c") and (stu_rollnum[1]=="S" or stu_rollnum[1]=="s"):
+    rno="Student is from CS department"
+else:
+    rno="Student is not from CS department"
+print(rno)
+
+
+
+
+# Define the criteria for a lucky card
+def is_lucky_card(suit, card):
+    return (
+        (suit == "spade" and card == "ace") or
+        (suit == "heart") or
+        (suit == "diamond" and card in ("queen", "king")) or
+        (card == "7")
+    )
+
+# Input the card details from the user
+suit = input("Enter the suit of the card (spade, heart, diamond, club): ").strip().lower()
+card = input("Enter the rank of the card (ace, 2, 3, ..., 10, jack, queen, king, 7): ").strip().lower()
+
+# Check if the card is lucky
+if is_lucky_card(suit, card):
+    print(f"The card with suit '{suit}' and rank '{card}' is lucky!")
+else:
+    print(f"The card with suit '{suit}' and rank '{card}' is not lucky.")
+
+
+
+
+# Input the number of students
+n = int(input("Enter the number of students: "))
+# Initialize the count of passed students
+pass_stu = 0
+# Loop through each student's marks
+for student_num in range(n):
+    marks = int(input(f"Enter the marks for student {student_num+1}: "))
+    if marks >= 40:
+        pass_stu += 1
+# Calculate the percentage of students who passed
+pass_per = (pass_stu / n) * 100
+# Print the percentage of students who passed
+print(f"{pass_per:.2f}% of students passed.")
+
+
+#Program to print Fibonacii series
+n1=0
+n2=1
+num=int(input("Enter the number of elements:"))
+print(n1)
+print(n2)
+for i in range(2,num):
+    n3=n1+n2
+    print(n3)
+    n1=n2
+    n2=n3
+
+
+
+# Input a number from the user
+n = int(input("Enter a positive integer: "))
+
+# Print the starting number
+print(n, end=' ')
+
+# Generate the Collatz sequence until reaching 1
+while n != 1:
+    if n % 2 == 1:  # Check if the number is odd
+        n = 3 * n + 1  # Update the number based on Collatz rule for odd
+    else:  # The number is even
+        n = n // 2  # Update the number based on Collatz rule for even
+    
+    # Print the current number in the sequence
+    print(n, end=' ')
+
+
+
+#Program to check number is prime or not
+num=int(input("Enter a number:"))
+temp=0
+for i in range(2,num):
+    if(num%i==0):
+        temp=1
+        break
+if(temp==0):
+    print(num,"is a prime number")
+else:
+    print(num,"is not a prime number")
+
+
+
+#Find birthays in a month using dictionary
+birthday={
+    'Riya':'22/08/2004',
+    'Stuti':'15/03/2002',
+    'Sneha':'16/04/2003',
+    'Meera':'04/06/2006',
+    'Prachi':'06/09/2001'
+}
+month=input("Enter Birthday month(MM): ")
+for name,bday in birthday.items():
+    bday_month=bday[3:5]
+    if bday_month==month:
+        print(name)
+
