@@ -49,25 +49,34 @@ print("Jumbled String:", jumbled_string)
 
 
 
+#Program to check two blood groups are compatible or not.
 
-#Program to check two blood group matches or not.
-compatible_group = {
-    'A+': ['A+', 'AB+'],
-    'A-': ['A+', 'A-', 'AB+', 'AB-'],
-    'B+': ['B+', 'AB+'],
-    'B-': ['B+', 'B-', 'AB+', 'AB-'],
-    'AB+': ['AB+'],
-    'AB-': ['AB+', 'AB-'],
-    'O+': ['A+', 'B+', 'AB+', 'O+'],
-    'O-': ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
-}
-donor_bg = input("Enter the Donor's Blood group: ").strip().upper()
-recipient_bg = input("Enter the Recipient's Blood group: ").strip().upper()
-# Check for compatibility
-if donor_bg in compatible_group and recipient_bg in compatible_group[donor_bg]:
-    print("Both Blood Groups match.")
+donor_group = input("Enter donor's blood group (e.g., A+, O-, etc.): ").upper().strip()
+recipient_group = input("Enter recipient's blood group (e.g., A+, O-, etc.): ").upper().strip()
+
+is_compatible = False
+
+if donor_group == 'O-' and recipient_group in ['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+']:
+    is_compatible = True
+elif donor_group == 'O+' and recipient_group in ['O+', 'A+', 'B+', 'AB+']:
+    is_compatible = True
+elif donor_group == 'A-' and recipient_group in ['A-', 'A+', 'AB-', 'AB+']:
+    is_compatible = True
+elif donor_group == 'A+' and recipient_group in ['A+', 'AB+']:
+    is_compatible = True
+elif donor_group == 'B-' and recipient_group in ['B-', 'B+', 'AB-', 'AB+']:
+    is_compatible = True
+elif donor_group == 'B+' and recipient_group in ['B+', 'AB+']:
+    is_compatible = True
+elif donor_group == 'AB-' and recipient_group in ['AB-', 'AB+']:
+    is_compatible = True
+elif donor_group == 'AB+' and recipient_group in ['AB+']:
+    is_compatible = True
+
+if is_compatible == True:
+    print(f"Doner's Blood group '{donor_group}' and Reciver's Blood group '{recipient_group}' are compatible.")
 else:
-    print("Blood Groups do not match.")
+    print(f"Doner's Blood group '{donor_group}' and Reciver's Blood group '{recipient_group}' are not compatible.")
 
 
 
