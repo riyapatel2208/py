@@ -205,3 +205,35 @@ for note in denominations:
 print("You will need the following notes:")
 for note, count in note_count.items():
     print(f"₹{note}: {count} notes")
+
+
+
+
+
+# Dictionary of names and birthdays
+birthday = {
+    'Riya': '22/08/2004',
+    'Stuti': '15/03/2002',
+    'Sneha': '16/04/2003',
+    'Meera': '04/06/2006',
+    'Prachi': '06/09/2001'
+}
+
+# Input: Get the birthday month from the user
+month = input("Enter Birthday month (MM): ")
+
+# Initialize a flag to track if any birthdays were found
+found = False
+
+# Iterate through the dictionary
+for name, bday in birthday.items():
+    # Extract the month from the birthday
+    bday_month = bday[3:5]
+    # Check if the birthday month matches the input month
+    if bday_month == month:
+        print(name)
+        found = True  # Set the flag to True if a birthday is found
+
+# If no birthdays were found, print "Not available"
+if not found:
+    print("Not available")
