@@ -49,34 +49,30 @@ print("Jumbled String:", jumbled_string)
 
 
 
-#Program to check two blood groups are compatible or not.
+#Program to check two blood groups are # Program to check two blood groups are compatible or not
+
+valid_blood_groups = ['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+']
 
 donor_group = input("Enter donor's blood group (e.g., A+, O-, etc.): ").upper().strip()
 recipient_group = input("Enter recipient's blood group (e.g., A+, O-, etc.): ").upper().strip()
 
-is_compatible = False
-
-if donor_group == 'O-' and recipient_group in ['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+']:
-    is_compatible = True
-elif donor_group == 'O+' and recipient_group in ['O+', 'A+', 'B+', 'AB+']:
-    is_compatible = True
-elif donor_group == 'A-' and recipient_group in ['A-', 'A+', 'AB-', 'AB+']:
-    is_compatible = True
-elif donor_group == 'A+' and recipient_group in ['A+', 'AB+']:
-    is_compatible = True
-elif donor_group == 'B-' and recipient_group in ['B-', 'B+', 'AB-', 'AB+']:
-    is_compatible = True
-elif donor_group == 'B+' and recipient_group in ['B+', 'AB+']:
-    is_compatible = True
-elif donor_group == 'AB-' and recipient_group in ['AB-', 'AB+']:
-    is_compatible = True
-elif donor_group == 'AB+' and recipient_group in ['AB+']:
-    is_compatible = True
-
-if is_compatible == True:
-    print(f"Doner's Blood group '{donor_group}' and Reciver's Blood group '{recipient_group}' are compatible.")
+# Check for invalid blood groups
+if donor_group not in valid_blood_groups or recipient_group not in valid_blood_groups:
+    print("Error: Invalid blood group entered.")
 else:
-    print(f"Doner's Blood group '{donor_group}' and Reciver's Blood group '{recipient_group}' are not compatible.")
+    # Check compatibility
+    if donor_group == 'O-' and recipient_group in ['O-', 'O+', 'A-', 'A+', 'B-', 'B+', 'AB-', 'AB+'] or\
+       donor_group == 'O+' and recipient_group in ['O+', 'A+', 'B+', 'AB+'] or\
+       donor_group == 'A-' and recipient_group in ['A-', 'A+', 'AB-', 'AB+'] or\
+       donor_group == 'A+' and recipient_group in ['A+', 'AB+'] or\
+       donor_group == 'B-' and recipient_group in ['B-', 'B+', 'AB-', 'AB+'] or\
+       donor_group == 'B+' and recipient_group in ['B+', 'AB+'] or\
+       donor_group == 'AB-' and recipient_group in ['AB-', 'AB+'] or\
+       donor_group == 'AB+' and recipient_group in ['AB+']:
+        print(f"Donor's Blood group '{donor_group}' and Recipient's Blood group '{recipient_group}' are compatible.")
+    else:
+        print(f"Donor's Blood group '{donor_group}' and Recipient's Blood group '{recipient_group}' are not compatible.")
+
 
 
 
