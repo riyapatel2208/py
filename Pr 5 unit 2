@@ -1,0 +1,68 @@
+# academic.py
+
+# Global variable to store course data
+courses = {}
+
+def add_course(name, credits, points):
+    courses[name] = (credits, points)
+    print(f"Added: {name}")
+
+def drop_course(name):
+    if name in courses:
+        del courses[name]
+        print(f"Dropped: {name}")
+    else:
+        print(f"Course not found: {name}")
+
+def print_record():
+    if not courses:
+        print("No courses.")
+    else:
+        for name, (credits, points) in courses.items():
+            print(f"{name}: {credits} credits, {points} points")
+
+def calculate_cgpa():
+    total_credits = sum(credits for credits, _ in courses.values())
+    total_points = sum(credits * points for credits, points in courses.values())
+    cgpa = total_points / total_credits if total_credits > 0 else 0
+    print(f"CGPA: {cgpa:.2f}")
+
+
+
+
+# main.py
+
+import academic
+
+while True:
+    print("\nOptions:")
+    print("1. Add a course")
+    print("2. Drop a course")
+    print("3. Print academic record")
+    print("4. Calculate CGPA")
+    print("5. Exit")
+    
+    choice = input("Enter your choice (1-5): ")
+    
+    if choice == '1':
+        name = input("Enter course name: ")
+        credits = float(input("Enter course credits: "))
+        points = float(input("Enter earned points: "))
+        academic.add_course(name, credits, points)
+        
+    elif choice == '2':
+        name = input("Enter course name to drop: ")
+        academic.drop_course(name)
+        
+    elif choice == '3':
+        academic.print_record()
+        
+    elif choice == '4':
+        academic.calculate_cgpa()
+        
+    elif choice == '5':
+        print("Exiting...")
+        break
+        
+    else:
+        print("Invalid choice! Please try again.")
