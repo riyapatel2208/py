@@ -1,0 +1,31 @@
+# Program to split text into words and join words to form sentences
+
+def process_file(input_file, output_file):
+    try:
+        # Read content from the input file
+        with open(input_file, 'r') as infile:
+            content = infile.read()
+        
+        # Split the content into words
+        words = content.split()
+        
+        # Join the words to form sentences
+        # (Here, we are joining them back into a single string)
+        sentences = ' '.join(words)
+        
+        # Write the processed content to the output file
+        with open(output_file, 'w') as outfile:
+            outfile.write(sentences)
+        
+        print(f"Content processed and saved in '{output_file}'.")
+    except FileNotFoundError:
+        print(f"Error: File '{input_file}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Specify the input and output file paths
+input_file = 'input.txt'
+output_file = 'output.txt'
+
+# Call the function to process the files
+process_file(input_file, output_file)
