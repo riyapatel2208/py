@@ -1,0 +1,31 @@
+class BankAccount:
+    def __init__(self, account_number, balance=0):
+        self._account_number = account_number
+        self._balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"Deposited ${amount}. New balance is ${self._balance}.")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        if amount > 0:
+            if self._balance >= amount:
+                self._balance -= amount
+                print(f"Withdrew ${amount}. New balance is ${self._balance}.")
+            else:
+                print("Insufficient balance for this withdrawal.")
+        else:
+            print("Withdrawal amount must be positive.")
+
+    def get_balance(self):
+        return self._balance
+
+
+account = BankAccount(account_number="123456789", balance=500)
+account.deposit(200)
+account.withdraw(100)
+current_balance = account.get_balance()
+print(f"Current balance: ${current_balance}")
