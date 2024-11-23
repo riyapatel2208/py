@@ -1,0 +1,19 @@
+class Person:
+    def __init__(self, name, country, date_of_birth):
+        self.name = name
+        self.country = country
+        year, month, day = map(int, date_of_birth.split('-'))
+        self.year_of_birth = year
+        self.month_of_birth = month
+        self.day_of_birth = day
+
+    def calculate_age(self, current_date):
+        current_year, current_month, current_day = map(int, current_date.split('-'))
+        age = current_year - self.year_of_birth
+        if (current_month, current_day) < (self.month_of_birth, self.day_of_birth):
+            age -= 1
+        return age
+
+person = Person(name="Alice", country="USA", date_of_birth="1990-05-15")
+current_date = "2024-11-23"
+print(f"{person.name} from {person.country} is {person.calculate_age(current_date)} years old.")
