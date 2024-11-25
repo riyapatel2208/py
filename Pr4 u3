@@ -1,31 +1,48 @@
 class BankAccount:
-    def __init__(self, account_number, balance=0):
-        self._account_number = account_number
-        self._balance = balance
+    def __init__(self, account_number, initial_balance=0):
+        self.__account_number = account_number
+        self.__balance = initial_balance
 
     def deposit(self, amount):
         if amount > 0:
-            self._balance += amount
-            print(f"Deposited ${amount}. New balance is ${self._balance}.")
+            self.__balance += amount
+            print(f"Deposited: {amount}")
         else:
             print("Deposit amount must be positive.")
 
     def withdraw(self, amount):
         if amount > 0:
-            if self._balance >= amount:
-                self._balance -= amount
-                print(f"Withdrew ${amount}. New balance is ${self._balance}.")
+            if amount <= self.__balance:
+                self.__balance -= amount
+                print(f"Withdrawn: {amount}")
             else:
-                print("Insufficient balance for this withdrawal.")
+                print("Insufficient balance.")
         else:
             print("Withdrawal amount must be positive.")
 
     def get_balance(self):
-        return self._balance
+        return self.__balance
 
 
-account = BankAccount(account_number="123456789", balance=500)
-account.deposit(200)
-account.withdraw(100)
-current_balance = account.get_balance()
-print(f"Current balance: ${current_balance}")
+if __name__ == "__main__":
+    account_number = input("Enter account number: ")
+    initial_balance = float(input("Enter initial balance: "))
+    my_account = BankAccount(account_number, initial_balance)
+
+    while True:
+        print("\n1. Deposit\n2. Withdraw\n3. Check Balance\n4. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            amount = float(input("Enter amount to deposit: "))
+            my_account.deposit(amount)
+        elif choice == "2":
+            amount = float(input("Enter amount to withdraw: "))
+            my_account.withdraw(amount)
+        elif choice == "3":
+            print(f"Current Balance: {my_account.get_balance()}")
+        elif choice == "4":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid option. Please try again.")
