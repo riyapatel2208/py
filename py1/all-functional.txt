@@ -1,0 +1,81 @@
+----------------------------------------------Built-in Functions: 
+print("Hello, World!")  # Built-in function
+print(len("Python"))    # Outputs: 6
+
+-------------------------------------------User-defined Functions:
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("Alice"))  # Outputs: Hello, Alice!
+
+---------------------------------------------Local Variables:
+def my_function():
+    x = 10  # Local variable
+    print(x)
+
+my_function()
+# print(x)  # Error: x is not defined
+
+--------------------------------------------Global Variables
+x = 20  # Global variable
+
+def my_function():
+    print(x)  # Accessing global variable
+
+my_function()
+
+
+-----------------------------------------------Global Keyword:
+x = 10
+
+def modify_global():
+    global x
+    x = 20
+
+modify_global()
+print(x)  # Outputs: 20
+
+------------------------------------------------------Default Arguments
+def greet(name="Guest"):
+    return f"Hello, {name}!"
+
+print(greet())           # Outputs: Hello, Guest!
+print(greet("Alice"))    # Outputs: Hello, Alice!
+
+----------------------------------------------------------Recursion
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))  # Outputs: 120
+
+--------------------------------------------------Lambda Functions
+# Syntax: lambda arguments: expression
+
+square = lambda x: x ** 2
+print(square(5))  # Outputs: 25
+
+# Example with multiple arguments
+add = lambda x, y: x + y
+print(add(3, 7))  # Outputs: 10
+
+
+--------------------------------------------------------------Higher-Order Functions
+-----------------------------------------(example:1)
+numbers = [1, 2, 3, 4]
+squares = map(lambda x: x ** 2, numbers)
+print(list(squares))  # Outputs: [1, 4, 9, 16]
+
+-----------------------------------------(example:2)
+# A higher-order function that takes another function as an argument
+def fun(f, x):
+    return f(x)
+
+# A simple function to pass
+def square(x):
+    return x * x
+
+# Using apply_function to apply the square function
+res = fun(square, 5)
+print(res)  

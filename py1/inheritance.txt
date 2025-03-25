@@ -1,0 +1,134 @@
+-----------------Single Inheritance:
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+# Creating object of Dog
+dog = Dog()
+dog.speak()  # Inherited from Animal class
+dog.bark()   # Defined in Dog class
+
+
+------------------------- Multiple Inheritance:
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog:
+    def bark(self):
+        print("Dog barks")
+
+class Puppy(Animal, Dog):
+    def play(self):
+        print("Puppy plays")
+
+# Creating object of Puppy
+puppy = Puppy()
+puppy.speak()  # Inherited from Animal
+puppy.bark()   # Inherited from Dog
+puppy.play()   # Defined in Puppy class
+
+
+------------------------------------Method Overriding:
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def speak(self):
+        print("Dog barks")
+
+# Creating object of Dog
+dog = Dog()
+dog.speak()  # Overridden method from Dog class
+
+-------------------------------------------Using super():
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):
+    def speak(self):
+        super().speak()  # Call method of base class
+        print("Dog barks")
+
+# Creating object of Dog
+dog = Dog()
+dog.speak()
+
+
+-------------------Multilevel Inheritance
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):  # Inheriting from Animal
+    def bark(self):
+        print("Dog barks")
+
+class Puppy(Dog):  # Inheriting from Dog
+    def weep(self):
+        print("Puppy weeps")
+
+# Creating an object of Puppy
+puppy = Puppy()
+puppy.speak()  # Inherited from Animal
+puppy.bark()   # Inherited from Dog
+puppy.weep()   # Defined in Puppy
+
+
+--------------------Hierarchical Inheritance
+
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):  # Inheriting from Animal
+    def bark(self):
+        print("Dog barks")
+
+class Cat(Animal):  # Inheriting from Animal
+    def meow(self):
+        print("Cat meows")
+
+# Creating objects of Dog and Cat
+dog = Dog()
+cat = Cat()
+
+dog.speak()  # Inherited from Animal
+dog.bark()   # Defined in Dog
+
+cat.speak()  # Inherited from Animal
+cat.meow()   # Defined in Cat
+
+
+--------------------Hybrid Inheritance
+class Animal:
+    def speak(self):
+        print("Animal speaks")
+
+class Dog(Animal):  # Single Inheritance
+    def bark(self):
+        print("Dog barks")
+
+class Pet:
+    def show_affection(self):
+        print("Pet shows affection")
+
+class Puppy(Dog, Pet):  # Multiple Inheritance
+    def weep(self):
+        print("Puppy weeps")
+
+# Creating an object of Puppy
+puppy = Puppy()
+puppy.speak()          # Inherited from Animal (via Dog)
+puppy.bark()           # Inherited from Dog
+puppy.show_affection() # Inherited from Pet
+puppy.weep()           # Defined in Puppy

@@ -1,0 +1,110 @@
+# Writing to a file
+with open('example.txt', 'w') as file:
+    file.write("This is a test file.\n")
+    file.write("Hello, Python!\n")
+
+# Reading from a file
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+
+
+
+--------------------------read file in append mode using readline
+file_name = "sample.txt"
+
+# Open the file in append+read mode (a+)
+with open(file_name, "a+") as file:
+    # Append new content
+    file.write("This is a new line appended using a+ mode.\n")
+
+    # Move the cursor to the beginning before reading
+    file.seek(0)
+
+    # Read all lines into a variable
+    lines = file.readlines()
+
+    # Print the variable directly
+    print(lines)
+
+
+----------------------diffrent file for each table 
+
+
+for num in range(1, 6):  # Loop for tables 1 to 5
+    filename = f"Table_{num}.txt"
+    with open(filename, "w") as file:
+        for i in range(1, 11):  # Multiplication from 1 to 10
+            file.write(f"{num} x {i} = {num * i}\n")
+    print(f"File '{filename}' created successfully.")
+
+
+
+-------------------------Program to read uppar and lower case latter in file
+def count_upper_lower(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            upper_count = sum(1 for char in content if char.isupper())
+            lower_count = sum(1 for char in content if char.islower())
+            
+            print("Content of the file:")
+            print(content)
+            print("\nNumber of uppercase letters:", upper_count)
+            print("Number of lowercase letters:", lower_count)
+    except FileNotFoundError:
+        print("File not found. Please check the file path.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Provide the path to your file
+file_path = "example.txt"
+count_upper_lower(file_path)
+******************
+or
+******************
+with open("example.txt", "r") as file:
+    content = file.read()
+    
+    upper_counts = {}
+    lower_counts = {}
+
+    for char in content:
+        if char.isupper():
+            upper_counts[char] = upper_counts.get(char, 0) + 1
+        elif char.islower():
+            lower_counts[char] = lower_counts.get(char, 0) + 1
+
+print("Uppercase letter counts:")
+for letter in sorted(upper_counts):
+    print(f"{letter}: {upper_counts[letter]}")
+
+print("\nLowercase letter counts:")
+for letter in sorted(lower_counts):
+    print(f"{letter}: {lower_counts[letter]}")
+
+
+
+----------------------find and replace
+
+file_path = 'example.txt'
+old_word = 'gujarat'
+new_word = 'gujrat'
+
+try:
+    # Open the file in read mode and read its content
+    with open(file_path, 'r') as file:
+        content = file.read()
+    
+    # Replace the old word with the new word
+    updated_content = content.replace(old_word, new_word)
+    
+    # Open the file in write mode and update the content
+    with open(file_path, 'w') as file:
+        file.write(updated_content)
+    
+    print(f"Replaced all occurrences of '{old_word}' with '{new_word}' in {file_path}.")
+except FileNotFoundError:
+    print(f"The file {file_path} was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")

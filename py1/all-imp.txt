@@ -1,0 +1,174 @@
+ ----------------------------- -----------------------------# Method Resolution Order (MRO) - Determines the order in which methods are inherited
+class A:
+    def show(self):
+        print("Class A")
+
+class B(A):
+    def show(self):
+        print("Class B")
+
+class C(A):
+    def show(self):
+        print("Class C")
+
+class D(B, C):  # Multiple Inheritance
+    pass
+
+print("\nMRO Example:")
+print(D.__mro__)  # Prints the MRO of class D
+obj = D()
+obj.show()  # B's show() is called due to MRO
+
+# -----------------------------
+ ----------------------------- -----------------------------# Duck Typing - Object's behavior matters more than its actual type
+class Duck:
+    def speak(self):
+        print("Quack Quack")
+
+class Dog:
+    def speak(self):
+        print("Bark Bark")
+
+def make_speak(animal):
+    # Duck typing: If it has `speak()`, it works
+    animal.speak()
+
+print("\nDuck Typing Example:")
+make_speak(Duck())  # Works because Duck has `speak()`
+make_speak(Dog())   # Works because Dog has `speak()`
+
+
+ ----------------------------- -----------------------------# Lambda Function - Anonymous function
+square = lambda x: x ** 2  # Shorter way to define functions
+print("\nLambda Function Example:")
+print("Square of 5:", square(5))
+
+# -----------------------------
+ ----------------------------- -----------------------------# Higher-Order Function - Takes a function as argument or returns a function
+def apply_function(func, value):
+    return func(value)
+
+print("\nHigher Order Function Example:")
+print("Cube using HOF:", apply_function(lambda x: x ** 3, 3))  # Pass lambda function
+
+# -----------------------------
+ ----------------------------- -----------------------------# Constructor - __init__() is used to initialize objects
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def show(self):
+        print(f"Car: {self.brand} {self.model}")
+
+print("\nConstructor Example:")
+c1 = Car("Toyota", "Camry")
+c1.show()
+
+# -----------------------------
+ ----------------------------- -----------------------------# Composition - One class contains an instance of another class
+class Engine:
+    def start(self):
+        print("Engine started")
+
+class Vehicle:
+    def __init__(self):
+        self.engine = Engine()  # Composition
+
+    def start_vehicle(self):
+        self.engine.start()
+
+print("\nComposition Example:")
+v = Vehicle()
+v.start_vehicle()
+
+# -----------------------------
+ ----------------------------- -----------------------------# Polymorphism - Same interface, different implementations
+class Cat:
+    def sound(self):
+        return "Meow"
+
+class Dog:
+    def sound(self):
+        return "Bark"
+
+def make_sound(animal):
+    print(animal.sound())
+
+print("\nPolymorphism Example:")
+make_sound(Cat())  # Calls Cat's sound()
+make_sound(Dog())  # Calls Dog's sound()
+
+# -----------------------------
+ ----------------------------- -----------------------------# Iterable - An object that can return an iterator
+class MyIterable:
+    def __init__(self, data):
+        self.data = data
+
+    def __iter__(self):
+        return iter(self.data)  # Returns an iterator
+
+print("\nIterable Example:")
+iterable_obj = MyIterable([1, 2, 3])
+for i in iterable_obj:
+    print(i)
+
+# -----------------------------
+ ----------------------------- -----------------------------# Iterator - Implements __iter__() and __next__()
+class MyIterator:
+    def __init__(self, limit):
+        self.limit = limit
+        self.count = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count < self.limit:
+            self.count += 1
+            return self.count
+        else:
+            raise StopIteration
+
+print("\nIterator Example:")
+it = MyIterator(3)
+for num in it:
+    print(num)
+
+# -----------------------------
+ ----------------------------- -----------------------------# Generator - Uses yield instead of return, keeps state
+def my_generator():
+    yield "First"
+    yield "Second"
+    yield "Third"
+
+print("\nGenerator Example:")
+for value in my_generator():
+    print(value)
+
+# -----------------------------
+ ----------------------------- -----------------------------# Closure - A function returning another function, keeping access to its scope
+def outer_function(text):
+    def inner_function():
+        print("Closure Example:", text)
+    return inner_function
+
+print("\nClosure Example:")
+closure_instance = outer_function("Hello from Closure")
+closure_instance()  # Calls the inner function
+
+# -----------------------------
+ ----------------------------- -----------------------------# Decorator - Modifies function behavior
+def my_decorator(func):
+    def wrapper():
+        print("Before function call")
+        func()
+        print("After function call")
+    return wrapper
+
+@my_decorator
+def decorated_function():
+    print("I am inside the decorated function")
+
+print("\nDecorator Example:")
+decorated_function()

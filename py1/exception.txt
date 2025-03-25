@@ -1,0 +1,33 @@
+------------custom Exceptions
+class NegativeNumberError(Exception):
+    pass
+
+try:
+    num = int(input("Enter a positive number: "))
+    if num < 0:
+        raise NegativeNumberError("Negative number entered!")
+except NegativeNumberError as e:
+    print(e)
+
+--------------------exception
+def handle_exceptions():
+    try:
+        # Asking for user input to demonstrate exceptions
+        num1 = int(input("Enter the first number: "))  # May raise ValueError
+        num2 = int(input("Enter the second number: "))  # May raise ValueError
+        
+        # Performing division (may raise ZeroDivisionError)
+        result = num1 / num2
+    except ZeroDivisionError as e:
+        print(f"Error: {e} - Cannot divide by zero!")
+    except ValueError as e:
+        print(f"Error: {e} - Invalid input, please enter an integer!")
+    else:
+        # If no exceptions occur, this block executes
+        print(f"The result of division is: {result}")
+    finally:
+        # This block executes no matter what
+        print("Execution completed. Closing resources (if any).")
+
+# Run the function
+handle_exceptions()
